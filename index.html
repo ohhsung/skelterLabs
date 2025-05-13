@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스켈터랩스</title>
+
+    <!------------------------------ JS -------------------------->
+
+
+    <!-- 헤더 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        window.onload = () => {
+            // 헤더스크롤
+            let header = document.querySelector('.header');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY >= 200) {
+                    header.classList.add('active');
+                } else {
+                    header.classList.remove('active');
+                }
+            });
+
+            // 스와이퍼 슬라이드
+            var grabSwiper = new Swiper(".grabSwiper", {
+                slidesPerView: 2.2,
+                spaceBetween: 200,
+                grabCursor: true,
+            });
+
+            var slideSwiper = new Swiper(".slideSwiper", {
+                slidesPerView: 3.3,
+                spaceBetween: 200,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            AOS.init();
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!------------------------------ CSS -------------------------->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- 메인 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="inner">
+            <h1>
+                <a href="#">
+                    <svg width="100%" height="100%" style="max-width:180px; height:auto;" viewBox="0 0 182 32"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M29.7201 15.1209L16.0984 7.1959L9.91521 10.7953V13.7117L19.7762 19.4494L16.0984 21.5877L4.98471 15.1209V9.38608L16.0984 2.91928L28.4675 10.1152L29.7201 9.38608V7.925L16.0984 0L2.47656 7.925V16.5791L16.0984 24.507L22.2844 20.9076V17.9912L12.4205 12.2535L16.0984 10.1152L27.212 16.5791L27.2149 22.3168L16.0984 28.7836L3.72921 21.5877L2.47656 22.3168V23.775L16.0984 31.7L29.7201 23.775V15.1209Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M178.073 18.4605L176.131 18.0114C175.338 17.8278 174.598 17.4041 174.598 16.6358C174.598 15.7884 175.365 15.1274 176.485 15.1274C177.43 15.1274 178.375 15.7206 178.398 16.6019C178.398 16.6188 178.413 16.6358 178.433 16.6358H180.934C180.955 16.6358 180.972 16.6188 180.969 16.599C180.949 14.0342 178.609 12.9326 176.429 12.9326C173.776 12.9326 171.889 14.5455 171.889 16.5538C171.889 18.3786 172.983 19.5678 175.362 20.1751L177.085 20.5705C178.041 20.7824 178.726 21.2061 178.726 22.0252C178.726 22.9517 177.825 23.6127 176.347 23.6127C174.87 23.6127 174.016 22.7851 173.996 21.8219C173.996 21.8049 173.981 21.788 173.96 21.788H171.541C171.521 21.788 171.503 21.8049 171.506 21.8247C171.582 24.3669 174.004 25.8075 176.374 25.8075C179.001 25.8075 181.405 24.4319 181.405 22.0789C181.405 20.757 180.802 19.1186 178.067 18.4577L178.073 18.4605Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M151.61 13.1953C151.582 13.1953 151.557 13.2179 151.557 13.2462V14.424C151.557 14.441 151.554 14.4636 151.523 14.4382C150.419 13.4665 149.016 12.9326 147.567 12.9326C147.559 12.9326 147.55 12.9326 147.542 12.9326C147.533 12.9326 147.525 12.9326 147.516 12.9326C144.089 12.9326 141.313 15.8166 141.313 19.37C141.313 22.9235 144.092 25.8075 147.516 25.8075C147.53 25.8075 147.545 25.8075 147.559 25.8075C147.559 25.8075 147.564 25.8075 147.567 25.8075C149.016 25.8075 150.422 25.268 151.531 24.2906C151.531 24.2906 151.559 24.268 151.559 24.2906V25.5137C151.559 25.5419 151.582 25.5674 151.613 25.5674H154.129C154.157 25.5674 154.182 25.5448 154.182 25.5137V13.2462C154.182 13.2179 154.16 13.1953 154.129 13.1953H151.61ZM147.567 23.4743C145.365 23.4743 143.575 21.6326 143.575 19.37C143.575 17.1075 145.365 15.2658 147.567 15.2658C149.769 15.2658 151.554 17.1018 151.559 19.3587V19.3813C151.554 21.6383 149.764 23.4743 147.567 23.4743Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M140.271 23.3315H132.653V6.05286C132.653 6.02349 132.63 6 132.601 6H129.982C129.953 6 129.929 6.02349 129.929 6.05286V25.7546C129.929 25.784 129.953 25.8075 129.982 25.8075H140.271C140.3 25.8075 140.324 25.784 140.324 25.7546V23.3873C140.324 23.358 140.3 23.3345 140.271 23.3345V23.3315Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M121.972 13.1312C121.463 12.9998 120.949 12.9326 120.443 12.9326C118.924 12.9326 117.413 13.4991 116.297 14.5299V14.5241L116.273 14.5416L116.253 14.5679L116.253 12.9881C116.253 12.9589 116.23 12.9326 116.197 12.9326H113.651C113.622 12.9326 113.596 12.956 113.596 12.9881L113.596 25.752C113.596 25.7812 113.619 25.8075 113.651 25.8075H116.197C116.227 25.8075 116.253 25.7841 116.253 25.752V19.5905C116.253 17.2515 118.164 15.3476 120.443 15.3476C120.838 15.3476 121.232 15.406 121.612 15.5228C121.627 15.5286 121.641 15.5228 121.656 15.5169C121.668 15.5082 121.677 15.4965 121.679 15.4819L122.01 13.1954C122.013 13.1691 121.998 13.1429 121.972 13.137V13.1312Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M95.7252 12.9326H93.3025V8.0362C93.3025 8.00702 93.2795 7.98075 93.2478 7.98075H90.3875C90.3587 7.98075 90.3328 8.0041 90.3328 8.0362V12.9326H87.9098C87.881 12.9326 87.858 12.956 87.858 12.9851V15.3619C87.858 15.3911 87.881 15.4144 87.9098 15.4144H90.3328V25.7581C90.3328 25.7872 90.3558 25.8135 90.3875 25.8135H93.2478C93.2766 25.8135 93.3025 25.7902 93.3025 25.7581V15.4144H95.7252C95.754 15.4144 95.7771 15.3911 95.7771 15.3619V12.9851C95.7771 12.956 95.754 12.9326 95.7252 12.9326Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M84.8274 6H81.9793C81.9457 6 81.9185 6.02498 81.9185 6.0558V25.7517C81.9185 25.7825 81.9457 25.8075 81.9793 25.8075H84.8274C84.861 25.8075 84.8882 25.7825 84.8882 25.7517V6.0558C84.8882 6.02498 84.861 6 84.8274 6Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M72.6062 12.9326C72.5857 12.9326 72.5624 12.9326 72.542 12.9326C68.9739 12.9326 66.0798 15.8166 66.0798 19.37C66.0798 22.9235 68.9739 25.8075 72.542 25.8075C72.6266 25.8075 72.7112 25.8075 72.7929 25.8018C72.8162 25.8018 72.8396 25.8018 72.8629 25.799C72.9242 25.7962 72.9854 25.7933 73.0467 25.7877C73.073 25.7877 73.0992 25.782 73.1255 25.782C73.1838 25.7764 73.2393 25.7707 73.2976 25.7651C73.3268 25.7623 73.3559 25.7594 73.3822 25.7538C73.423 25.7481 73.461 25.7425 73.5018 25.7368C73.5397 25.7312 73.5806 25.7255 73.6185 25.7199C75.5236 25.3951 77.207 24.2115 78.1581 22.4743C78.1639 22.463 78.1668 22.4461 78.161 22.4348C78.1552 22.4207 78.1464 22.4094 78.1347 22.4037L76.1684 21.4236C76.1421 21.4123 76.1129 21.4207 76.0984 21.4433C75.3573 22.6975 73.9949 23.4771 72.542 23.4771C70.6748 23.4771 69.0498 22.2314 68.5626 20.4378C68.5538 20.3982 68.5917 20.3982 68.5917 20.3982H78.8204C78.8466 20.3982 78.8699 20.3784 78.8758 20.353C78.9254 20.0282 78.9487 19.7005 78.9487 19.3757C78.9487 15.8477 76.11 12.975 72.6062 12.9383V12.9326ZM68.5917 18.3447C68.5596 18.3447 68.5597 18.3221 68.5626 18.308C69.0469 16.5115 70.6719 15.263 72.542 15.263C74.4121 15.263 76.0429 16.5143 76.5243 18.3136C76.5243 18.3249 76.5243 18.3419 76.501 18.3419H68.5917V18.3447Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M58.4198 18.884L64.1378 13.0236C64.1525 13.009 64.1584 12.9855 64.1495 12.9649C64.1407 12.9444 64.1231 12.9326 64.0996 12.9326H60.8933C60.8933 12.9326 60.8639 12.9385 60.8551 12.9502L56.5477 17.3689C56.4419 17.4775 56.4331 17.3689 56.4331 17.3689V6.05285C56.4331 6.02349 56.4096 6 56.3802 6H53.7587C53.7294 6 53.7059 6.02349 53.7059 6.05285V25.7517C53.7059 25.781 53.7294 25.8045 53.7587 25.8045H56.3802C56.4096 25.8045 56.4331 25.781 56.4331 25.7517V20.9598C56.4331 20.9129 56.4713 20.8776 56.5154 20.8776C56.536 20.8776 56.5595 20.8864 56.5742 20.9011L61.438 25.7898C61.438 25.7898 61.4615 25.8075 61.4791 25.8075H65.0322C65.0557 25.8075 65.0763 25.7957 65.0851 25.7722C65.0939 25.7517 65.091 25.7282 65.0733 25.7106L58.4227 18.8898L58.4198 18.884Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M45.6479 14.9113L43.3067 14.3095C40.9656 13.7077 40.7756 12.4516 40.7756 11.8498C40.7756 10.1292 42.3363 9.06295 44.0871 9.06295C45.9876 9.06295 47.3526 10.249 47.3727 12.0046C47.3727 12.0251 47.3871 12.0397 47.4073 12.0397H50.0824C50.1026 12.0397 50.1199 12.0222 50.117 12.0017C50.0968 8.61016 47.4937 6.49519 44.1677 6.49519C40.8418 6.49519 38.0025 8.59847 38.0025 11.9024C38.0025 13.4594 38.6476 15.8344 42.607 16.8451L44.9769 17.4469C46.4858 17.8559 47.9659 18.6475 47.9659 20.3155C47.9659 21.8726 46.673 23.2368 44.4672 23.2368C42.2615 23.2368 40.6921 21.7002 40.6172 20.1023C40.6172 20.0848 40.6028 20.0702 40.5826 20.0702H37.9046C37.8845 20.0702 37.8672 20.0877 37.8672 20.1081C37.8873 23.1258 40.5222 25.8075 44.4643 25.8075C48.4065 25.8075 50.7361 23.3215 50.7361 20.1812C50.7361 17.4235 48.7722 15.7029 45.6479 14.9113Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M104.283 12.9326C104.263 12.9326 104.24 12.9326 104.219 12.9326C100.651 12.9326 97.7571 15.8166 97.7571 19.37C97.7571 22.9235 100.651 25.8075 104.219 25.8075C104.304 25.8075 104.389 25.8075 104.47 25.8018C104.494 25.8018 104.517 25.8018 104.54 25.799C104.601 25.7962 104.663 25.7933 104.724 25.7877C104.75 25.7877 104.777 25.782 104.803 25.782C104.861 25.7764 104.917 25.7707 104.975 25.7651C105.004 25.7623 105.033 25.7594 105.06 25.7538C105.1 25.7481 105.138 25.7425 105.179 25.7368C105.217 25.7312 105.258 25.7255 105.296 25.7199C107.201 25.3951 108.884 24.2115 109.835 22.4743C109.841 22.463 109.844 22.4461 109.838 22.4348C109.832 22.4207 109.824 22.4094 109.812 22.4037L107.846 21.4236C107.819 21.4123 107.79 21.4207 107.776 21.4433C107.035 22.6975 105.672 23.4771 104.219 23.4771C102.352 23.4771 100.727 22.2314 100.24 20.4378C100.231 20.3982 100.269 20.3982 100.269 20.3982H110.498C110.524 20.3982 110.547 20.3784 110.553 20.353C110.603 20.0282 110.626 19.7005 110.626 19.3757C110.626 15.8477 107.787 12.975 104.283 12.9383V12.9326ZM100.269 18.3447C100.237 18.3447 100.237 18.3221 100.24 18.308C100.724 16.5115 102.349 15.263 104.219 15.263C106.089 15.263 107.72 16.5143 108.202 18.3136C108.202 18.3249 108.202 18.3419 108.178 18.3419H100.269V18.3447Z"
+                            fill="currentColor"></path>
+                        <path
+                            d="M159.724 6C159.752 6 159.778 6.0226 159.778 6.05084V14.4256C159.778 14.4426 159.781 14.4652 159.812 14.4398C160.916 13.4681 162.319 12.9342 163.767 12.9342C163.776 12.9342 163.784 12.9342 163.793 12.9342C163.801 12.9342 163.81 12.9342 163.818 12.9342C167.246 12.9342 170.021 15.8182 170.021 19.3716C170.021 22.9251 167.243 25.8091 163.818 25.8091C163.804 25.8091 163.79 25.8091 163.776 25.8091C163.776 25.8091 163.77 25.8091 163.767 25.8091C162.319 25.8091 160.913 25.2695 159.803 24.2922C159.803 24.2922 159.775 24.2696 159.775 24.2922V25.5153C159.775 25.5435 159.752 25.569 159.721 25.569H157.206C157.178 25.569 157.152 25.5464 157.152 25.5153V6.05084C157.152 6.0226 157.175 6 157.206 6H159.724ZM163.767 23.4759C165.97 23.4759 167.76 21.6342 167.76 19.3716C167.76 17.1091 165.97 15.2674 163.767 15.2674C161.565 15.2674 159.781 17.1034 159.775 19.3603V19.3829C159.781 21.6398 161.571 23.4759 163.767 23.4759Z"
+                            fill="currentColor"></path>
+                    </svg>
+                </a>
+            </h1>
+
+
+            <nav class="nav">
+                <ul class="gnb">
+                    <li>
+                        <a href="#">COMPANY</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="depth-01">
+                            <p>GEN AI OFFERINGS</p> <img src="img/icon/v_arrow.svg" alt="">
+                        </a>
+                        <ul class="depth-02">
+                            <li>
+                                <a href="#">
+                                    <img src="https://cdn.prod.website-files.com/6794b77e6b3bc7c2b2dd122b/67b89d024643c83e1fd31c3f_Frame%201321316420.svg"
+                                        alt="">
+                                    <div class="text">
+                                        <div class="text01">AI Agent 를 활용한 비즈니스 자동화</div>
+                                        <div class="text02">기업의 복잡한 업무를 독립적으로 수행하는 AI Agent 모델을 구축합니다.</div>
+                                    </div>
+                                </a>
+
+                                <a href="#">
+                                    <img src="https://cdn.prod.website-files.com/6794b77e6b3bc7c2b2dd122b/67b89d02d425b090d6ecebe3_Frame%201321316418.svg"
+                                        alt="">
+                                    <div class="text">
+                                        <div class="text01">RAG 기반 맞춤형 챗봇 등 애플리케이션 개발</div>
+                                        <div class="text02">RAG 기술로 할루시네이션을 제어하고, 기업 데이터 기반으로 동작해 정확도와 효율을
+                                            극대화합니다.</div>
+                                    </div>
+                                </a>
+
+                                <a href="#">
+                                    <img src="https://cdn.prod.website-files.com/6794b77e6b3bc7c2b2dd122b/67b89d02a2e1ced38e999c04_Frame%201321316418-1.svg"
+                                        alt="">
+                                    <div class="text">
+                                        <div class="text01">Private Data 기반, 기업에 꼭 맞는 LLM 모델 구축</div>
+                                        <div class="text02">모델 학습에 기업 데이터를 활용해 보안성과 성능을 모두 갖춘 기업향 LLM 모델을 구축합니다.
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#">
+                                    <img src="https://cdn.prod.website-files.com/6794b77e6b3bc7c2b2dd122b/67b89d02e1c11295ba4029a4_Frame%201321316418-2.svg"
+                                        alt="">
+                                    <div class="text">
+                                        <div class="text01">대고객용 노코드 AI 챗봇 빌더 구축 및 운영 지원</div>
+                                        <div class="text02">코딩 없이 구축 가능한 AI 챗봇으로, 신속한 고객 응대를 통해 비즈니스 민첩성을 강화합니다.
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#">
+                                    <img src="https://cdn.prod.website-files.com/6794b77e6b3bc7c2b2dd122b/67b89d02a51600cd2d5ef2b7_Frame%201321316418-3.svg"
+                                        alt="">
+                                    <div class="text">
+                                        <div class="text01">AI 컨택센터 구축을 위한 실시간 STT 및 TTS 모델 제공</div>
+                                        <div class="text02">한국어 특화 음성 인식과 자연스러운 음성 합성 기술로 고객 커뮤니케이션을 지원합니다.</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">USECASE</a>
+                    </li>
+
+                    <li>
+                        <a href="#">NEWSROOM</a>
+                    </li>
+
+                    <li>
+                        <a href="#">BLOG</a>
+                    </li>
+
+                    <li>
+                        <a href="#">CAREER</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="service">
+                <a href="#">문의하기 →</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section section-01">
+            <div class="inner" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="300">
+                <div class="text">
+                    <h2 class="title">
+                        Purpose-Driven AI <br>
+                        Powered by your data
+                    </h2>
+                    <p class="detail">
+                        기업의 데이터로 완성되는 맞춤형 Gen AI 솔루션
+                    </p>
+                    <a href="#" class="btn">
+                        Gen AI 패키지 알아보기 →
+                    </a>
+                </div><!-- text -->
+            </div><!-- inner -->
+        </section><!-- 1 -->
+
+        <section class="section-02">
+            <div class="inner">
+                <div class="text" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="title">
+                        유스케이스 발굴부터 개발, 그리고 유지 보수까지 <br>
+                        Gen AI 도입의 모든 단계를 통합 서비스로 제공합니다.
+                    </h2>
+                </div><!-- text -->
+                <div class="swiper grabSwiper" data-aos="fade-left" data-aos-delay="600">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <p class="number">01</p>
+                                <p class="title">AI 유스케이스 발굴</p>
+                                <p class="content">기업 내 병목 현상을 신속하게 진단하고, 데이터 기반 인사이트를 통해 실질적인 ROI를 창출할 수 있는 유스케이스를
+                                    발굴하여, 비즈니스 프로세스를 혁신합니다.</p>
+                            </div>
+                        </div><!-- slide -->
+
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <p class="number">02</p>
+                                <p class="title">AI 솔루션 개발 및 배포</p>
+                                <p class="content">비즈니스 목표와 요구사항을 면밀히 분석해 맞춤형 AI 솔루션을 설계·개발하며, 체계적인 품질 관리와 실시간 피드백을 통해
+                                    지속적으로 개선하여 최적의 성과를 실현합니다.</p>
+                            </div>
+                        </div><!-- slide -->
+
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <p class="number">03</p>
+                                <p class="title">기존 시스템 통합</p>
+                                <p class="content">기존 IT 인프라와 신규 AI 솔루션 간 원활한 데이터 연동 및 최적화된 통합 전략을 수립, 데이터 보안과 시스템 안정성을
+                                    최우선으로 하는 확장 가능한 통합 환경을 구축합니다.</p>
+                            </div>
+                        </div><!-- slide -->
+
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <p class="number">04</p>
+                                <p class="title">성능 평가 및 유지 보수</p>
+                                <p class="content">24시간 모니터링과 정기 진단을 통해 도입된 솔루션의 성능과 보안을 지속적으로 개선, 급변하는 비즈니스 환경에 대응하는
+                                    안정적 운영 환경을 제공합니다.</p>
+                            </div>
+                        </div><!-- slide -->
+                    </div><!-- wrapper -->
+                </div><!-- grab -->
+            </div><!-- inner -->
+        </section><!-- 2 -->
+
+        <section class="section-03">
+            <div class="inner">
+                <div class="container">
+                    <div class="item item-left section-title">
+                        <h2 class="title">
+                            Gen AI <br>
+                            Offerings
+                        </h2>
+
+                        <p class="detail">
+                            기업향 Gen AI 서비스+프로덕트 패키지
+                        </p>
+
+                        <a href="#" class="btn">보러가기 →</a>
+                    </div>
+
+                    <div class="item item-right" data-aos="fade-up" data-aos-delay="600">
+                        <div class="card-left card-gap">
+                            <div class="card">
+                                <a href="#">
+                                    <img src="img/icon/right_arrow.svg" alt="">
+                                    <p class="box-title">
+                                        AI Agent 를 활용한 <br>
+                                        비즈니스 자동화
+                                    </p>
+                                </a>
+                            </div><!-- card -->
+                            <div class="card">
+                                <a href="#">
+                                    <img src="img/icon/right_arrow.svg" alt="">
+                                    <p class="box-title">
+                                        RAG 기반 맞춤형 <br>
+                                        애플리케이션 개발
+                                    </p>
+                                </a>
+                            </div><!-- card -->
+                            <div class="card">
+                                <a href="#">
+                                    <img src="img/icon/right_arrow.svg" alt="">
+                                    <p class="box-title">
+                                        AICC 구축을 위한 <br>
+                                        STT 및 TTS 모델 제공
+                                    </p>
+                                </a>
+                            </div><!-- card -->
+                        </div><!-- card left -->
+                        <div class="card-right card-gap">
+                            <div class="card">
+                                <a href="#">
+                                    <img src="img/icon/right_arrow.svg" alt="">
+                                    <p class="box-title">
+                                        Private Data 기반 <br>
+                                        기업향 LLM 모델 구축
+                                    </p>
+                                </a>
+                            </div><!-- card -->
+                            <div class="card">
+                                <a href="#">
+                                    <img src="img/icon/right_arrow.svg" alt="">
+                                    <p class="box-title">
+                                        노코드 AI 챗봇 빌더 <br>
+                                        구축 및 운영 지원
+                                    </p>
+                                </a>
+                            </div><!-- card -->
+                        </div><!-- card right -->
+                    </div><!-- item right -->
+                </div><!-- container -->
+            </div><!-- inner -->
+        </section><!-- 3 -->
+
+        <section class="section-04">
+            <div class="inner">
+                <div class="section-title" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="title">
+                        Gen AI 전문 영업팀에 <br>
+                        지금 바로 문의하세요.
+                    </h2>
+
+                    <p class="detail">
+                        궁금한 사항을 남겨주시면 1~3 영업일 내 연락드리겠습니다.
+                    </p>
+
+                    <div class="check-box-wrap">
+                        <div class="check-box">
+                            <img src="img/icon/check.svg" alt="">
+                            <span>
+                                Gen AI 서비스 패키지 견적 문의
+                            </span>
+                        </div>
+                        <div class="check-box">
+                            <img src="img/icon/check.svg" alt="">
+                            <span>
+                                B2B 서비스 및 솔루션 관련 문의
+                            </span>
+                        </div>
+                        <div class="check-box">
+                            <img src="img/icon/check.svg" alt="">
+                            <span>
+                                회사 소개서 다운로드
+                            </span>
+                        </div>
+                    </div>
+                </div><!-- section title -->
+
+                <div class="contact-wrap">
+                    <div class="contact-inner">
+                        <form class="contact-form" method="get" aria-label="문의하기">
+                            <div class="flex">
+                                <div class="form-group">
+                                    <label class="label">성 <span class="required">*</span></label>
+                                    <input type="text" name="last-name" placeholder="성" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">이름 <span class="required">*</span></label>
+                                    <input type="text" name="first-name" placeholder="이름" required>
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="form-group">
+                                    <label class="label">전화번호 <span class="required">*</span></label>
+                                    <input type="tel" name="phone" placeholder="555-5555" inputmode="numeric" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">이메일 <span class="required">*</span></label>
+                                    <input type="email" name="email" placeholder="Acme@acme.com" required>
+                                </div>
+                            </div>
+
+                            <div class="flex">
+                                <div class="form-group">
+                                    <label class="label">기업명 <span class="required">*</span></label>
+                                    <input type="text" name="company" placeholder="기업명을 입력해주세요" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">직책 <span class="required">*</span></label>
+                                    <input type="text" name="position" placeholder="직책을 입력해주세요" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label">관심있는 생성형 AI 기술 <span class="required">*</span></label>
+                                <select name="interest" required>
+                                    <option value="" selected hidden>선택해주세요</option>
+                                    <option value="AICC">AICC (음성인식, 음성합성, 보이스봇 등)</option>
+                                    <option value="GenAI">생성형 AI (AI Agent, 챗봇, sLLM, LLM 등)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label">방문경로 <span class="required">*</span></label>
+                                <select name="source" required>
+                                    <option value="" selected hidden>선택해주세요</option>
+                                    <option value="검색 유입">검색 유입</option>
+                                    <option value="소셜 미디어">소셜 미디어</option>
+                                    <option value="이메일 캠페인">이메일 캠페인</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label">문의사항 <span class="required">*</span></label>
+                                <textarea class="inquiry" name="message" placeholder="문의사항을 입력해주세요" required></textarea>
+                            </div>
+
+                            <div class="form-checklist">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" required>
+                                    <label>[필수] 개인정보취급방침에 동의합니다</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" required>
+                                    <label>[필수] 개인정보 수집 및 이용 동의</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" required>
+                                    <label>[필수] 제3자 정보제공 동의</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox">
+                                    <label>[선택] 마케팅 정보 수신 동의</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="submit-btn">제출하기 →</button>
+                        </form>
+                    </div><!-- contact inner -->
+                </div><!-- contact wrap -->
+            </div><!-- inner -->
+        </section><!-- 4 -->
+
+        <section class="section-05">
+            <div class="inner">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 class="title">
+                            Blog
+                        </h2>
+
+                        <a href="#" class="btn">보러가기 →</a>
+                    </div>
+                </div>
+
+
+                <div class="swiper slideSwiper">
+
+                    <div class="btn-wrap">
+                        <div class="swiper-button-prev"><img src="img/icon/nav_prev.svg" alt=""></div>
+                        <div class="swiper-button-next"><img src="img/icon/nav_next.svg" alt=""></div>
+                    </div>
+
+                    <div class="swiper-wrapper" data-aos="fade-left">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/img/section_div_01.png" alt="">
+                                <div class="text">
+                                    <p class="date">2025-03-26</p>
+                                    <p class="title">AI 기반 문서 검토 자동화 실제 사례 :: 건설업 편</p>
+                                    <p class="view-more"><span>자세히보기</span><img src="img/icon/right_top_arrow.svg"
+                                            alt=""></p>
+                                </div>
+                            </a>
+                        </div><!-- silde -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/img/section_div_02.png" alt="">
+                                <div class="text">
+                                    <p class="date">2025-02-19</p>
+                                    <p class="title">딥시크(DeepSeek)가 주목받는 3가지 이유 :: 모델 연산, 아키텍처 분석부터 지식 증류 활용 방식까지</p>
+                                    <p class="view-more"><span>자세히보기</span><img src="img/icon/right_top_arrow.svg"
+                                            alt=""></p>
+                                </div>
+                            </a>
+                        </div><!-- silde -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/img/section_div_03.png" alt="">
+                                <div class="text">
+                                    <p class="date">2025-01-20</p>
+                                    <p class="title">실무에 강한 sLLM :: BELLA LLM 경찰청 도입 사례</p>
+                                    <p class="view-more"><span>자세히보기</span><img src="img/icon/right_top_arrow.svg"
+                                            alt=""></p>
+                                </div>
+                            </a>
+                        </div><!-- silde -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/img/section_div_04.png" alt="">
+                                <div class="text">
+                                    <p class="date">2024-12-16</p>
+                                    <p class="title">[무료 다운로드] 엔터프라이즈 AI 도입 우수사례집</p>
+                                    <p class="view-more"><span>자세히보기</span><img src="img/icon/right_top_arrow.svg"
+                                            alt=""></p>
+                                </div>
+                            </a>
+                        </div><!-- silde -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/img/section_div_05.png" alt="">
+                                <div class="text">
+                                    <p class="date">2024-12-10</p>
+                                    <p class="title">2025년 AI 트렌드 전망 :: 실용성의 시대</p>
+                                    <p class="view-more"><span>자세히보기</span><img src="img/icon/right_top_arrow.svg"
+                                            alt=""></p>
+                                </div>
+                            </a>
+                        </div><!-- silde -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/img/section_div_06.png" alt="">
+                                <div class="text">
+                                    <p class="date">2024-11-18</p>
+                                    <p class="title">신한투자증권 X 스켈터랩스 :: 증권사 RAG 활용 사례</p>
+                                    <p class="view-more"><span>자세히보기</span><img src="img/icon/right_top_arrow.svg"
+                                            alt=""></p>
+                                </div>
+                            </a>
+                        </div><!-- silde -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/img/section_div_07.png" alt="">
+                                <div class="text">
+                                    <p class="date">2024-10-30</p>
+                                    <p class="title">RAG Evaluation :: RAG 성능 평가란?</p>
+                                    <p class="view-more"><span>자세히보기</span><img src="img/icon/right_top_arrow.svg"
+                                            alt=""></p>
+                                </div>
+                            </a>
+                        </div><!-- silde -->
+                    </div><!-- wrapper -->
+                </div><!-- swiper -->
+            </div><!-- inner -->
+        </section><!-- 5 -->
+
+        <section class="section-06">
+            <div class="inner">
+                <div class="box" data-aos="fade-down" data-aos-delay="300">
+                    <div class="text">
+                        <h3>
+                            기업용 AI 솔루션 도입 <br>
+                            스켈터랩스와 함께라면 생각보다 어렵지 않습니다.
+                        </h3>
+
+                        <div class="link-wrap">
+                            <a class="link-01 link" href="#">문의하기 →</a>
+                            <a class="link-02 link" href="#">우수 사례 보러가기 →</a>
+                        </div><!-- link wrap -->
+                    </div><!-- text -->
+                </div><!-- box -->
+            </div><!-- inner -->
+        </section><!-- 6 -->
+    </main>
+
+    <footer class="footer">
+        <div class="inner">
+            <div class="service">
+                <div class="info">
+                    <div class="part-01">
+                        <a href="#" class="service-title">COMPANY</a>
+                    </div><!-- 1 -->
+
+                    <div class="part-02">
+                        <a href="#" class="service-title">GEN AI OFFERINGS</a>
+                        <ul class="explain">
+                            <li><a href="#">AI Agent 를 활용한 비즈니스 자동화</a></li>
+                            <li><a href="#">RAG 기반 맞춤형 챗봇 등 애플리케이션 개발</a></li>
+                            <li><a href="#">Private Data 기반, 기업에 꼭 맞는 LLM 모델 구축</a></li>
+                            <li><a href="#">대고객용 노코드 AI 챗봇 빌더 구축 및 운영 지원</a></li>
+                            <li><a href="#">AI 컨택센터 구축을 위한 STT 및 TTS 모델 제공</a></li>
+                        </ul>
+                    </div><!-- 2 -->
+
+                    <div class="part-03">
+                        <p class="service-title">USECASE</p>
+                        <p class="service-title">NEWSROOM</p>
+                        <p class="service-title">BLOG</p>
+                        <p class="service-title">CARRER</p>
+                        <p class="service-title">INQUIRY</p>
+                    </div><!-- 3 -->
+                </div><!-- info -->
+
+                <div class="right">
+                    <a href="#" class="download">
+                        <p>회사소개서 다운로드</p><img src="img/icon/download.svg" alt="">
+                    </a>
+
+                    <a href="#" class="view-more"><img src="img/icon/metanet.webp" alt="" class="metanet">
+                        <p>바로가기</p><img src="img/icon/right_top_white.svg" alt="" class="arrow">
+                    </a>
+                </div>
+            </div><!-- service -->
+
+            <div class="company">
+                <div class="logo-img">
+                    <img src="img/icon/logo.svg" alt="">
+                </div>
+
+                <p class="copyright">© 2025 Skelter Labs | All Rights Reserved</p>
+                <p class="copyright">Privacy</p>
+            </div><!-- company -->
+        </div><!-- inner -->
+    </footer>
+</body>
+
+</html>
